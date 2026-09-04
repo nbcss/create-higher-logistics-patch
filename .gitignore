@@ -1,0 +1,10 @@
+### Gradle ###
+.gradle
+.idea
+/build/
+
+### Maven publish target (the publishing block writes here) ###
+/repo/
+
+### Minecraft Modding (standalone dev run, if runClient is used) ###
+/run/
