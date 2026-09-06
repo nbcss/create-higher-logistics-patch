@@ -1,8 +1,6 @@
 pluginManagement {
     repositories {
-        mavenCentral()
         gradlePluginPortal()
-        maven { url = 'https://maven.neoforged.net/releases' }
     }
 }
 
@@ -10,6 +8,4 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
 }
 
-// Matches the repository/directory name. The published artifact is still `higherlogisticspatch` (base.archivesName in
-// build.gradle), which is the coordinate Create: Factory Controller bundles.
-rootProject.name = 'create_higher_logistics_patch'
+rootProject.name = mod_id
