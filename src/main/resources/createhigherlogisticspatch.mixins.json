@@ -6,7 +6,9 @@
   "mixins": [
     "InventorySummaryMixin",
     "LogisticsManagerMixin",
-    "PackagerBlockEntityMixin"
+    "PackagerBlockEntityMixin",
+    "PackagerSharedInventoryMixin",
+    "RequestPromiseQueueMixin"
   ],
   "client": [
     "StockKeeperRequestScreenMixin"

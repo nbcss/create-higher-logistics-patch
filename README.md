@@ -3,13 +3,13 @@
 A small [Create](https://www.curseforge.com/minecraft/mc-mods/create) add-on for NeoForge 1.21.1 that applies bug-fix
 patches to Create's higher-logistics and Stock Keeper systems.
 
-## What it fixes
+## Fixed bugs
 
-- **Packager available-item tracking** ([Create#10496](https://github.com/Creators-of-Create/Create/pull/10496)) -
-  fixes some major over-request issues in Create's higher logistics system.
-- **Stock Keeper request screen** ([Create#9937](https://github.com/Creators-of-Create/Create/issues/9937)) - fixes the
-  recipe request screen freezing and mis-counting ingredient amounts when several ingredients draw from the same stack.
-
+- **Gauge could rarely read 0 item in stock** ([Create#10486](https://github.com/Creators-of-Create/Create/issues/10486))
+- **Gauge could sometime over-request items** ([Create#9987](https://github.com/Creators-of-Create/Create/issues/9987))
+- **Stock Keeper freezing screen with JEI integration** ([Create#9937](https://github.com/Creators-of-Create/Create/issues/9937))
+- **Ordered package cannot create correctly with multiple packagers** ([Create#10054](https://github.com/Creators-of-Create/Create/issues/10054)).
+- **Promise over-reduction with shared inventories** ([Create#10634](https://github.com/Creators-of-Create/Create/issues/10634)).
 
 ## Requirements
 
