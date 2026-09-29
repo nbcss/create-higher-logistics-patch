@@ -56,9 +56,17 @@ base {
 // Mojang ships Java 21 to end users in 1.21.1, so mods should target Java 21.
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
+// Dev runs use the newer neo_run_version; builds (command line, CI) compile against neo_version. IntelliJ counts as a
+// dev run when syncing (editor classpath) and when launching an Application run config (e.g. "Client"), which it
+// delegates to a generated Gradle task named "<mainClass>.main()".
+def isRunInvocation = System.getProperty('idea.sync.active') == 'true' || gradle.startParameter.taskNames.any {
+    def name = it.tokenize(':').last()
+    name.startsWith('run') || (name.startsWith('prepare') && name.endsWith('Run')) || name.endsWith('.main()')
+}
+
 neoForge {
     // Specify the version of NeoForge to use.
-    version = project.neo_version
+    version = isRunInvocation ? project.neo_run_version : project.neo_version
 
     parchment {
         mappingsVersion = project.parchment_mappings_version
@@ -102,6 +110,10 @@ neoForge {
 
         // applies to all the run configs above
         configureEach {
+            // Distinct IntelliJ run config names: this build is linked into the Factory Controller IDE project,
+            // where same-named configs ("Client") overwrite each other on sync.
+            ideName = "${it.name.capitalize()} (Higher Logistics Patch)"
+
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
             // "SCAN": For mods scan.
