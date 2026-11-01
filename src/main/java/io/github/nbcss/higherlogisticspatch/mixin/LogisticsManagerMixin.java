@@ -62,6 +62,9 @@ public abstract class LogisticsManagerMixin {
             original.call(link, stack, amount, address, linkIndex, finalLink, orderId, context, ignoredHandler);
         if (req == null)
             return null;
+        // Cap only holds for Create's own processRequest
+        if (link.getClass() != LogisticallyLinkedBehaviour.class)
+            return req;
 
         Map<PackagerBlockEntity, InventorySummary> ledger = hlp$ledger.get();
         if (ledger == null)
